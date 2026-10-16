@@ -7,8 +7,13 @@
 .AppleDouble
 .LSOverride
 
+# IBKR
+.ibkr_terminal_config
+*.pid
+
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
