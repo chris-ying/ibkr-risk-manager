@@ -63,7 +63,7 @@ class AutoStopsMixin:
                 print(f"Could not cancel closed-position profit stop {order_id}: {exc}")
 
     def maybe_place_loss_stop(self, con_id):
-        """Place one DAY protective STP for a newly opened stock position."""
+        """Place one GTC protective STP for a newly opened stock position."""
         contract = self.position_contracts.get(con_id)
         qty = self.positions.get(con_id, 0.0)
         entry = self.position_avg_costs.get(con_id)
@@ -99,7 +99,7 @@ class AutoStopsMixin:
         order.orderType = "STP"
         order.auxPrice = stop_price
         order.totalQuantity = abs(qty)
-        order.tif = "DAY"
+        order.tif = "GTC"
         order.outsideRth = False
         order.transmit = True
         order.orderRef = LOSS_STOP_ORDER_REF
